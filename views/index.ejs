@@ -33,7 +33,8 @@
           <div class = "collection">
             <a href="#httpserver" class = "collection-item">Basic http server</a>
             <a href="#httprequest" class = "collection-item">Basic http request</a>
-            <a href="#httprequestimage" class = "collection-item">http request + fs module to download an image off imgur's website</a>
+            <a href="#httprequestimage" class = "collection-item">Download an image from imgur!</a>
+            <a href="#httpresponsehtml" class = "collection-item">Serve html from your server</a>
           </div>
         </div>
       </div>
@@ -46,14 +47,14 @@
       <div class = "col s12">
         <p>NodeJS provides us with helpful modules out of the box. One of these is called http. Using http
         we can start up a server that will respond with a greeting.</p>
-        <pre>
+        <pre class = "card panel grey darken-4">
           <code>
-<span style="color:purple;">var</span> http = require("http");
+<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
 
-http.createServer(function(req, res){
-  res.write("Hello there!");
+http.createServer(<span class = "red-text lighten-1">function</span>(req, res){
+  res.<span class = "yellow-text lighten-1">write</span>(<span class = "green-text text-accent-3">"Hello there!"</span>);
   res.end();
-}).listen(3000);
+}).listen(<span class = "blue-grey-text lighten-4">3000</span>);
           </code>
         </pre>
       </div>
@@ -64,20 +65,20 @@ http.createServer(function(req, res){
       </div>
       <div class = "aaa col s12">
         <p>We can use the http module to make requests for webpages.</p>
-        <pre>
+        <pre class = "card panel grey darken-4">
           <code>
-var http = require("http");
+<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
 
 http.request({
-  host: "example.com",
-  path: "/"
-}, function(response){
-  var webpage = "";
-  response.on("data", function(data){
+  host: <span class = "green-text text-accent-3">"example.com"</span>,
+  path: <span class = "green-text text-accent-3">"/"</span>
+}, <span class = "red-text lighten-1">function</span>(response){
+  <span class = "red-text lighten-1">var</span> webpage = <span class = "green-text text-accent-3">" "</span>;
+  response.on(<span class = "green-text text-accent-3">"data"</span>, <span class = "red-text lighten-1">function</span>(data){
     webpage += data;
   });
-  response.on("end", function(){
-    console.log(webpage);
+  response.on(<span class = "green-text text-accent-3">"end"</span>, <span class = "red-text lighten-1">function</span>(){
+    <span class = "blue-grey-text lighten-4">console</span>.<span class = "yellow-text lighten-1">log</span>(webpage);
   });
 }).end();
           </code>
@@ -88,25 +89,47 @@ http.request({
         <h3>Basic image download using http request</h3>
       </div>
       <div class = "xxx col s12">
-        <p>Let's use http.request to fetch an image and then we'll use another module named fs to save that image.</p>
-        <pre>
+        <p>Let's use <span class = "red-text lighten-1">http.request</span> to fetch an image and then we'll use another module named <span class = "red-text lighten-1">fs</span> to save that image.</p>
+        <pre class = "card panel grey darken-4">
           <code>
-var http = require("http");
-var fs = require("fs");
+<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
+<span class = "red-text lighten-1">var</span> fs = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"fs"</span>);
 
-var writeStream = fs.createWriteStream("ourImage.jpg");
+<span class = "red-text lighten-1">var</span> writeStream = fs.createWriteStream(<span class = "green-text text-accent-3">"ourImage.jpg"</span>);
 
 http.request({
-  host: "i.imgur.com",
-  path: "/gmRbksB.jpg"
-}, function(response){
-  response.on("data", function(data){
-    writeStream.write(data);
+  host: <span class = "green-text text-accent-3">"i.imgur.com"</span>,
+  path: <span class = "green-text text-accent-3">"/gmRbksB.jpg"</span>
+}, <span class = "red-text lighten-1">function</span>(response){
+  response.on(<span class = "green-text text-accent-3">"data"</span>, <span class = "red-text lighten-1">function</span>(data){
+    writeStream.<span class = "yellow-text lighten-1">write</span>(data);
   });
 }).end();
           </code>
         </pre>
-        <p>var writeStream is simply a file in which we can write data into chunks at a time. The correct term is a stream.</p>
+      </div>
+
+      <div class = "col s12" id = "httpresponsehtml">
+        <h3>Serving html with your server</h3>
+      </div>
+      <div class = "yyy col s12">
+        <p>Here we'll create a readable stream that pipes everything out into the response. Make sure to create an index.html file where this file is located.</p>
+        <pre class = "card panel grey darken-4">
+          <code>
+<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
+<span class = "red-text lighten-1">var</span> fs = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"fs"</span>);
+
+http.createServer(<span class = "red-text lighten-1">function</span>(req, res){
+    <span class = "red-text lighten-1">var</span> html = fs.createReadStream(<span class = "green-text text-accent-3">"index.html"</span>);
+    html.pipe(res);
+    html.on(<span class = "green-text text-accent-3">"end"</span>, <span class = "red-text lighten-1">function</span>(){
+      res.end();
+    });
+}).listen(<span class = "blue-grey-text lighten-4">4000</span>);
+
+
+          </code>
+        </pre>
       </div>
 
       <div class = "row">
@@ -154,9 +177,13 @@ http.request({
     function xxx(){
       $(".xxx").addClass("animated bounceInLeft");
     }
+    function yyy(){
+      $(".yyy").addClass("animated bounceInLeft");
+    }
     var options = [
       {selector: ".aaa", offset: 60, callback: "aaa()"},
-      {selector: ".xxx", offset: 60, callback: "xxx()"}
+      {selector: ".xxx", offset: 60, callback: "xxx()"},
+      {selector: ".yyy", offset: 60, callback: "yyy()"}
     ];
     Materialize.scrollFire(options);
   </script>

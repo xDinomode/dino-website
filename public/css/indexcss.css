@@ -1,6 +1,15 @@
 body{
-  
+
 }
 p{
   font-size: 1.5em;
+}
+
+pre{
+  color: #fff;
+  padding-left: 10px;
+}
+code{
+  font-family: Roboto, Helvetica, sans-serif, Arial;
+  font-size: 1.0625em;
 }
