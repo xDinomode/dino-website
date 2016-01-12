@@ -5,15 +5,6 @@ p{
   font-size: 1.5em;
 }
 
-pre{
-  color: #fff;
-  padding-left: 10px;
-}
-code{
-  font-family: Roboto, Helvetica, sans-serif, Arial;
-  font-size: 1.0625em;
-}
-
 .style-dropdown{
   color:#fff;
 }
@@ -22,7 +13,7 @@ code{
   border-left: 3px solid #69f0ae;
 }
 .style-dropdown a:hover{
-  background-color: #fff;
+  background-color:#fff;
   color: #69f0ae;
 }
 
