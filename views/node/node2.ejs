@@ -1,3 +1,4 @@
+<!-- Express -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.1/animate.min.css">
-  <link rel="stylesheet" href="/css/node/node1css.css">
+  <link rel="stylesheet" href="/css/node/node2css.css">
 
 </head>
 <body>
@@ -37,16 +38,16 @@
     <div class = "container">
       <div class = "row">
         <div class = "col s12">
-          <h1 class = "center-align">Learn <span class = "green-text text-accent-2">NodeJS</span></h1>
+          <h1 class = "center-align">Learn <span class = "green-text text-accent-2">Express</span></h1>
         </div>
       </div>
 
       <div class = "row">
         <div class = "col s12">
           <div class = "collection">
-            <a href="#httpserver" class = "collection-item">Basic http server</a>
-            <a href="#httprequest" class = "collection-item">Basic http request</a>
-            <a href="#httprequestimage" class = "collection-item">Download an image from imgur!</a>
+            <a href="#httpserver" class = "collection-item">Basic express server</a>
+            <a href="#httprequest" class = "collection-item">Serve html with express</a>
+            <a href="#httprequestimage" class = "collection-item">Express get and post requests</a>
             <a href="#httpresponsehtml" class = "collection-item">Serve html from your server</a>
           </div>
         </div>
@@ -55,93 +56,120 @@
 
     <div class = "row">
       <div class = "col s12" id = "httpserver">
-        <h3>Basic http server</h3>
+        <h3>Basic Express Server</h3>
       </div>
       <div class = "col s12">
-        <p>NodeJS provides us with helpful modules out of the box. One of these is called http. Using http
-        we can start up a server that will respond with a greeting.</p>
+        <p><span><a href="http://expressjs.com/">Express</a></span> makes it easy and quick to build robust web apps.</p>
+        <blockquote class = "grey-text darken-3 blockquote-style">
+          npm install --save express
+        </blockquote>
         <pre class = "card panel grey darken-4">
           <code>
-<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
+<span class = "red-text lighten-1">var</span> express = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
+<span class = "red-text lighten-1">var</span> app = express();
 
-http.createServer(<span class = "red-text lighten-1">function</span>(req, res){
-  res.<span class = "yellow-text lighten-1">write</span>(<span class = "green-text text-accent-3">"Hello there!"</span>);
-  res.end();
-}).listen(<span class = "blue-grey-text lighten-4">3000</span>);
+app.get(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text lighten-1">function</span>(req, resp){
+  resp.<span class = "yellow-text lighten-1">send</span>(<span class = "green-text text-accent-3">"Hello world"</span>);
+});
+
+app.listen(<span class = "blue-grey-text lighten-4">4000</span>);
           </code>
         </pre>
       </div>
 
       <div class = "col s12" id = "httprequest">
-        <h3>Basic http request</h3>
+        <h3>Serve HTML with express</h3>
       </div>
       <div class = "aaa col s12">
-        <p>We can use the http module to make requests for webpages.</p>
+        <p>We'll use what's called a template engine to create dynamic html pages. <span><a href="http://www.embeddedjs.com/">EJS</a></span> in this case but there are many more to choose from.</p>
+        <p>Make sure to create a folder named views which will contain one file named index.ejs</p>
+        <blockquote class = "grey-text darken-3 blockquote-style">
+          npm install --save ejs
+        </blockquote>
         <pre class = "card panel grey darken-4">
           <code>
-<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
+<span class = "red-text lighten-1">var</span> express = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
+<span class = "red-text lighten-1">var</span> app = express();
 
-http.request({
-  host: <span class = "green-text text-accent-3">"example.com"</span>,
-  path: <span class = "green-text text-accent-3">"/"</span>
-}, <span class = "red-text lighten-1">function</span>(response){
-  <span class = "red-text lighten-1">var</span> webpage = <span class = "green-text text-accent-3">" "</span>;
-  response.on(<span class = "green-text text-accent-3">"data"</span>, <span class = "red-text lighten-1">function</span>(data){
-    webpage += data;
-  });
-  response.on(<span class = "green-text text-accent-3">"end"</span>, <span class = "red-text lighten-1">function</span>(){
-    <span class = "blue-grey-text lighten-4">console</span>.<span class = "yellow-text lighten-1">log</span>(webpage);
-  });
-}).end();
+app.set(<span class = "green-text text-accent-3">"view engine"</span>, <span class = "green-text text-accent-3">"ejs"</span>);
+app.set(<span class = "green-text text-accent-3">"views"</span>, <span class ="green-text text-accent-3">"./views"</span>);
+
+app.get(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text lighten-1">function</span>(req, resp){
+  resp.render(<span class = "green-text text-accent-3">"index"</span>);
+});
+
+app.listen(<span class = "blue-grey-text lighten-4">4000</span>);
           </code>
         </pre>
+        <p><span class = "red-text lighten-1">app.set("view engine", "ejs")</span> Tells express what template engine we'll be using.</p>
+        <p><span class = "red-text lighten-1">app.set("views", "./views")</span> Let's express know where to find our templates.</p>
+        <p><span class = "red-text lighten-1">resp.render("index")</span> Renders the index.ejs file inside /views. Make sure you created that file and placed any html inside of it.</p>
       </div>
 
       <div class = "col s12" id = "httprequestimage">
-        <h3>Basic image download using http request</h3>
+        <h3>Express get and post requests</h3>
       </div>
       <div class = "xxx col s12">
-        <p>Let's use <span class = "red-text lighten-1">http.request</span> to fetch an image and then we'll use another module named <span class = "red-text lighten-1">fs</span> to save that image.</p>
+        <p>We'll use a router to handle get/post requests. Create a folder named routes with one file inside named router.js</p>
+        <p>In order to read the data sent by post request to our server, we'll use a module named <span><a href= "https://www.npmjs.com/package/body-parser">body-parser</a></span></p>
+        <blockquote class = "grey-text darken-3 blockquote-style">
+          npm install --save body-parser
+        </blockquote>
         <pre class = "card panel grey darken-4">
           <code>
-<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
-<span class = "red-text lighten-1">var</span> fs = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"fs"</span>);
+<span class = "grey-text text-darken-2">//app.js</span>
+<span class = "red-text lighten-1">var</span> express = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
+<span class = "red-text lighten-1">var</span> app = express();
+<span class = "red-text lighten-1">var</span> router = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"./routes/router.js"</span>);
 
-<span class = "red-text lighten-1">var</span> writeStream = fs.createWriteStream(<span class = "green-text text-accent-3">"ourImage.jpg"</span>);
+<span class = "red-text lighten-1">var</span> bodyParser = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"body-parser"</span>);
 
-http.request({
-  host: <span class = "green-text text-accent-3">"i.imgur.com"</span>,
-  path: <span class = "green-text text-accent-3">"/gmRbksB.jpg"</span>
-}, <span class = "red-text lighten-1">function</span>(response){
-  response.on(<span class = "green-text text-accent-3">"data"</span>, <span class = "red-text lighten-1">function</span>(data){
-    writeStream.<span class = "yellow-text lighten-1">write</span>(data);
-  });
-}).end();
+app.set(<span class = "green-text text-accent-3">"view engine"</span>, <span class = "green-text text-accent-3">"ejs"</span>);
+app.set(<span class = "green-text text-accent-3">"views"</span>, <span class = "green-text text text-accent-3">"./views"</span>);
+
+app.use(bodyParser());
+
+app.use(<span class = "green-text text-accent-3">"/"</span>, router);
+
+app.listen(<span class = "blue-grey-text lighten-4">4000</span>);
           </code>
         </pre>
-      </div>
 
-      <div class = "col s12" id = "httpresponsehtml">
-        <h3>Serving html with your server</h3>
-      </div>
-      <div class = "yyy col s12">
-        <p>Here we'll create a readable stream that pipes everything out into the response. Make sure to create an index.html file where this file is located.</p>
+        <p><span class = "red-text lighten-1">var router = require("./routes/router.js")</span> Our router which isn't created yet. Keep following along to create it. Else this won't work.</p>
+        <p><span class = "red-text lighten-1">var bodyParser = require("body-parser")</span> Grab body-parser. Make sure you npm installed it.</p>
+        <p><span class = "red-text lighten-1">app.use(bodyParser())</span> Here we tell our app to use it globally.</p>
         <pre class = "card panel grey darken-4">
           <code>
-<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
-<span class = "red-text lighten-1">var</span> fs = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"fs"</span>);
+<span class = "grey-text text-darken-2">//router.js</span>
+<span class = "red-text lighten-1">var</span> express = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
+<span class = "red-text lighten-1">var</span> router = express.Router();
 
-http.createServer(<span class = "red-text lighten-1">function</span>(req, res){
-    <span class = "red-text lighten-1">var</span> html = fs.createReadStream(<span class = "green-text text-accent-3">"index.html"</span>);
-    html.pipe(res);
-    html.on(<span class = "green-text text-accent-3">"end"</span>, <span class = "red-text lighten-1">function</span>(){
-      res.end();
-    });
-}).listen(<span class = "blue-grey-text lighten-4">4000</span>);
+router.get(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text lighten-1">function</span>(req, resp){
+  resp.send(<span class = "green-text text-accent-3">&quot;&lt;form action = '/' method = 'POST'&gt; &lt;input type = 'text' name = 'firstname'&gt; &lt;input type = 'submit' value = 'submit'&gt; &lt;/form&gt;&quot;</span>);
+});
 
+router.post(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text lighten-1">function</span>(req, resp){
+  resp.send(<span class = "green-text text-accent-3">"Hello "</span> + req.<span class = "orange-text text-lighten-1">body</span>.firstname);
+});
 
-          </code>
+<span class = "red-text darken-1">module</span>.exports = router;
+</code>
         </pre>
+        <p>Here is our router. It does basically the same this as app but with the added benefit of less code in the main app.js file.</p>
+        <p><span class = "red-text lighten-1">router.get()</span> Returns an input box with a name attribute called firstname.</p>
+        <p><span class = "red-text lighten-1">router.post()</span> The body-parser passes the firstname's value into req.body.firstname. We respond with a greeting.</p>
+
+      </div>
+
+      <div class = "row">
+        <div class = "col s12">
+          <ul class="pagination">
+            <li class="waves-effect"><a href="/tutorials/node/1"><i class="material-icons">chevron_left</i></a></li>
+            <li class="waves-effect"><a href="/tutorials/node/1">1</a></li>
+            <li class="active blue darken-1"><a href="#!">2</a></li>
+            <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+          </ul>
+        </div>
       </div>
 
       <div class = "row">
