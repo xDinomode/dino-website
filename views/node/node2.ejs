@@ -65,11 +65,11 @@
         </blockquote>
         <pre class = "card panel grey darken-4">
           <code>
-<span class = "red-text lighten-1">var</span> express = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
-<span class = "red-text lighten-1">var</span> app = express();
+<span class = "red-text">var</span> express = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
+<span class = "red-text">var</span> app = express();
 
-app.get(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text lighten-1">function</span>(req, resp){
-  resp.<span class = "yellow-text lighten-1">send</span>(<span class = "green-text text-accent-3">"Hello world"</span>);
+app.get(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text">function</span>(req, resp){
+  resp.<span class = "yellow-text text-lighten-1">send</span>(<span class = "green-text text-accent-3">"Hello world"</span>);
 });
 
 app.listen(<span class = "blue-grey-text lighten-4">4000</span>);
@@ -88,22 +88,22 @@ app.listen(<span class = "blue-grey-text lighten-4">4000</span>);
         </blockquote>
         <pre class = "card panel grey darken-4">
           <code>
-<span class = "red-text lighten-1">var</span> express = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
-<span class = "red-text lighten-1">var</span> app = express();
+<span class = "red-text">var</span> express = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
+<span class = "red-text">var</span> app = express();
 
 app.set(<span class = "green-text text-accent-3">"view engine"</span>, <span class = "green-text text-accent-3">"ejs"</span>);
 app.set(<span class = "green-text text-accent-3">"views"</span>, <span class ="green-text text-accent-3">"./views"</span>);
 
-app.get(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text lighten-1">function</span>(req, resp){
+app.get(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text">function</span>(req, resp){
   resp.render(<span class = "green-text text-accent-3">"index"</span>);
 });
 
 app.listen(<span class = "blue-grey-text lighten-4">4000</span>);
           </code>
         </pre>
-        <p><span class = "red-text lighten-1">app.set("view engine", "ejs")</span> Tells express what template engine we'll be using.</p>
-        <p><span class = "red-text lighten-1">app.set("views", "./views")</span> Let's express know where to find our templates.</p>
-        <p><span class = "red-text lighten-1">resp.render("index")</span> Renders the index.ejs file inside /views. Make sure you created that file and placed any html inside of it.</p>
+        <p><span class = "red-text">app.set("view engine", "ejs")</span> Tells express what template engine we'll be using.</p>
+        <p><span class = "red-text">app.set("views", "./views")</span> Let's express know where to find our templates.</p>
+        <p><span class = "red-text">resp.render("index")</span> Renders the index.ejs file inside /views. Make sure you created that file and placed html inside of it.</p>
       </div>
 
       <div class = "col s12" id = "httprequestimage">
@@ -118,11 +118,11 @@ app.listen(<span class = "blue-grey-text lighten-4">4000</span>);
         <pre class = "card panel grey darken-4">
           <code>
 <span class = "grey-text text-darken-2">//app.js</span>
-<span class = "red-text lighten-1">var</span> express = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
-<span class = "red-text lighten-1">var</span> app = express();
-<span class = "red-text lighten-1">var</span> router = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"./routes/router.js"</span>);
+<span class = "red-text">var</span> express = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
+<span class = "red-text">var</span> app = express();
+<span class = "red-text">var</span> router = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"./routes/router.js"</span>);
 
-<span class = "red-text lighten-1">var</span> bodyParser = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"body-parser"</span>);
+<span class = "red-text">var</span> bodyParser = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"body-parser"</span>);
 
 app.set(<span class = "green-text text-accent-3">"view engine"</span>, <span class = "green-text text-accent-3">"ejs"</span>);
 app.set(<span class = "green-text text-accent-3">"views"</span>, <span class = "green-text text text-accent-3">"./views"</span>);
@@ -135,29 +135,29 @@ app.listen(<span class = "blue-grey-text lighten-4">4000</span>);
           </code>
         </pre>
 
-        <p><span class = "red-text lighten-1">var router = require("./routes/router.js")</span> Our router which isn't created yet. Keep following along to create it. Else this won't work.</p>
-        <p><span class = "red-text lighten-1">var bodyParser = require("body-parser")</span> Grab body-parser. Make sure you npm installed it.</p>
-        <p><span class = "red-text lighten-1">app.use(bodyParser())</span> Here we tell our app to use it globally.</p>
+        <p><span class = "red-text">var router = require("./routes/router.js")</span> Our router which isn't created yet. Keep following along to create it.</p>
+        <p><span class = "red-text">var bodyParser = require("body-parser")</span> Grab body-parser. Make sure you npm installed it.</p>
+        <p><span class = "red-text">app.use(bodyParser())</span> Here we tell our app to use body-parser globally.</p>
         <pre class = "card panel grey darken-4">
           <code>
 <span class = "grey-text text-darken-2">//router.js</span>
-<span class = "red-text lighten-1">var</span> express = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
-<span class = "red-text lighten-1">var</span> router = express.Router();
+<span class = "red-text">var</span> express = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"express"</span>);
+<span class = "red-text">var</span> router = express.Router();
 
-router.get(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text lighten-1">function</span>(req, resp){
+router.get(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text">function</span>(req, resp){
   resp.send(<span class = "green-text text-accent-3">&quot;&lt;form action = '/' method = 'POST'&gt; &lt;input type = 'text' name = 'firstname'&gt; &lt;input type = 'submit' value = 'submit'&gt; &lt;/form&gt;&quot;</span>);
 });
 
-router.post(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text lighten-1">function</span>(req, resp){
+router.post(<span class = "green-text text-accent-3">"/"</span>, <span class = "red-text">function</span>(req, resp){
   resp.send(<span class = "green-text text-accent-3">"Hello "</span> + req.<span class = "orange-text text-lighten-1">body</span>.firstname);
 });
 
 <span class = "red-text darken-1">module</span>.exports = router;
 </code>
         </pre>
-        <p>Here is our router. It does basically the same this as app but with the added benefit of less code in the main app.js file.</p>
-        <p><span class = "red-text lighten-1">router.get()</span> Returns an input box with a name attribute called firstname.</p>
-        <p><span class = "red-text lighten-1">router.post()</span> The body-parser passes the firstname's value into req.body.firstname. We respond with a greeting.</p>
+        <p>Here is our router. It does basically the same thing as app but with the added benefit of less code in the main app.js file.</p>
+        <p><span class = "red-text">router.get()</span> Serves an html form where a user can type in their name. This value get's sent to the post on submit.</p>
+        <p><span class = "red-text">router.post()</span> The body-parser passes the firstname's value into req.body.firstname. We respond with a greeting plus their name.</p>
 
       </div>
 
@@ -170,6 +170,12 @@ router.post(<span class = "green-text text-accent-3">"/"</span>, <span class = "
             <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
           </ul>
         </div>
+      </div>
+
+      <div class = "row">
+          <div class = "col s12">
+            <p><a href="https://github.com/xDinomode/ez-nodejs-projects/tree/master/nodeexpress">Source code on Github</a></p>
+          </div>
       </div>
 
       <div class = "row">
@@ -192,6 +198,7 @@ router.post(<span class = "green-text text-accent-3">"/"</span>, <span class = "
         </div>
         <div class = "col s12 center-align">
           <p class = "white-text">If you found anything useful, donate ;)</p>
+          <a href="/contact">contact</a>
         </div>
       </div>
       <div class = "footer-copyright">
@@ -205,6 +212,7 @@ router.post(<span class = "green-text text-accent-3">"/"</span>, <span class = "
               <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
             </form>
           </div>
+
         </div>
       </div>
     </div>

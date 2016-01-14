@@ -55,19 +55,19 @@
 
 
     <div class = "row">
-      <div class = "col s12" id = "httpserver">
+      <div class = "col s12">
         <h3>Basic http server</h3>
       </div>
       <div class = "col s12">
-        <p>NodeJS provides us with helpful modules out of the box. One of these is called http. Using http
+        <p>NodeJS provides us with helpful modules out of the box. One of these is called <span class = "red-text">http</span>. Using http
         we can start up a server that will respond with a greeting.</p>
         <pre class = "card panel grey darken-4">
           <code>
-<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
+<span class = "red-text">var</span> http = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
 
-http.createServer(<span class = "red-text lighten-1">function</span>(req, res){
-  res.<span class = "yellow-text lighten-1">write</span>(<span class = "green-text text-accent-3">"Hello there!"</span>);
-  res.end();
+http.createServer(<span class = "red-text">function</span>(request, response){
+  response.<span class = "yellow-text text-lighten-1">write</span>(<span class = "green-text text-accent-3">"Hello there!"</span>);
+  response.end();
 }).listen(<span class = "blue-grey-text lighten-4">3000</span>);
           </code>
         </pre>
@@ -77,21 +77,21 @@ http.createServer(<span class = "red-text lighten-1">function</span>(req, res){
         <h3>Basic http request</h3>
       </div>
       <div class = "aaa col s12">
-        <p>We can use the http module to make requests for webpages.</p>
+        <p>We can use the http module to make a request for a webpage.</p>
         <pre class = "card panel grey darken-4">
           <code>
-<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
+<span class = "red-text">var</span> http = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
 
 http.request({
   host: <span class = "green-text text-accent-3">"example.com"</span>,
   path: <span class = "green-text text-accent-3">"/"</span>
-}, <span class = "red-text lighten-1">function</span>(response){
-  <span class = "red-text lighten-1">var</span> webpage = <span class = "green-text text-accent-3">" "</span>;
-  response.on(<span class = "green-text text-accent-3">"data"</span>, <span class = "red-text lighten-1">function</span>(data){
+}, <span class = "red-text">function</span>(response){
+  <span class = "red-text">var</span> webpage = <span class = "green-text text-accent-3">" "</span>;
+  response.on(<span class = "green-text text-accent-3">"data"</span>, <span class = "red-text">function</span>(data){
     webpage += data;
   });
-  response.on(<span class = "green-text text-accent-3">"end"</span>, <span class = "red-text lighten-1">function</span>(){
-    <span class = "blue-grey-text lighten-4">console</span>.<span class = "yellow-text lighten-1">log</span>(webpage);
+  response.on(<span class = "green-text text-accent-3">"end"</span>, <span class = "red-text">function</span>(){
+    <span class = "blue-grey-text lighten-4">console</span>.<span class = "yellow-text text-lighten-1">log</span>(webpage);
   });
 }).end();
           </code>
@@ -102,20 +102,20 @@ http.request({
         <h3>Basic image download using http request</h3>
       </div>
       <div class = "xxx col s12">
-        <p>Let's use <span class = "red-text lighten-1">http.request</span> to fetch an image and then we'll use another module named <span class = "red-text lighten-1">fs</span> to save that image.</p>
+        <p>Let's use <span class = "red-text">http.request</span> to fetch an image and then we'll use another module named <span class = "red-text">fs</span> to save that image.</p>
         <pre class = "card panel grey darken-4">
           <code>
-<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
-<span class = "red-text lighten-1">var</span> fs = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"fs"</span>);
+<span class = "red-text">var</span> http = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
+<span class = "red-text">var</span> fs = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"fs"</span>);
 
-<span class = "red-text lighten-1">var</span> writeStream = fs.createWriteStream(<span class = "green-text text-accent-3">"ourImage.jpg"</span>);
+<span class = "red-text">var</span> writeStream = fs.createWriteStream(<span class = "green-text text-accent-3">"ourImage.jpg"</span>);
 
 http.request({
   host: <span class = "green-text text-accent-3">"i.imgur.com"</span>,
   path: <span class = "green-text text-accent-3">"/gmRbksB.jpg"</span>
-}, <span class = "red-text lighten-1">function</span>(response){
-  response.on(<span class = "green-text text-accent-3">"data"</span>, <span class = "red-text lighten-1">function</span>(data){
-    writeStream.<span class = "yellow-text lighten-1">write</span>(data);
+}, <span class = "red-text">function</span>(response){
+  response.on(<span class = "green-text text-accent-3">"data"</span>, <span class = "red-text">function</span>(data){
+    writeStream.<span class = "yellow-text text-lighten-1">write</span>(data);
   });
 }).end();
           </code>
@@ -129,13 +129,13 @@ http.request({
         <p>Here we'll create a readable stream that pipes everything out into the response. Make sure to create an index.html file where this file is located.</p>
         <pre class = "card panel grey darken-4">
           <code>
-<span class = "red-text lighten-1">var</span> http = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
-<span class = "red-text lighten-1">var</span> fs = <span class = "yellow-text lighten-1">require</span>(<span class = "green-text text-accent-3">"fs"</span>);
+<span class = "red-text">var</span> http = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"http"</span>);
+<span class = "red-text">var</span> fs = <span class = "yellow-text text-lighten-1">require</span>(<span class = "green-text text-accent-3">"fs"</span>);
 
-http.createServer(<span class = "red-text lighten-1">function</span>(req, res){
-    <span class = "red-text lighten-1">var</span> html = fs.createReadStream(<span class = "green-text text-accent-3">"index.html"</span>);
+http.createServer(<span class = "red-text">function</span>(req, res){
+    <span class = "red-text">var</span> html = fs.createReadStream(<span class = "green-text text-accent-3">"index.html"</span>);
     html.pipe(res);
-    html.on(<span class = "green-text text-accent-3">"end"</span>, <span class = "red-text lighten-1">function</span>(){
+    html.on(<span class = "green-text text-accent-3">"end"</span>, <span class = "red-text">function</span>(){
       res.end();
     });
 }).listen(<span class = "blue-grey-text lighten-4">4000</span>);
@@ -154,6 +154,12 @@ http.createServer(<span class = "red-text lighten-1">function</span>(req, res){
             <li class="waves-effect"><a href="/tutorials/node/2"><i class="material-icons">chevron_right</i></a></li>
           </ul>
         </div>
+      </div>
+
+      <div class = "row">
+          <div class = "col s12">
+            <p><a href="https://github.com/xDinomode/ez-nodejs-projects/tree/master/nodebasic">Source code on Github</a></p>
+          </div>
       </div>
 
       <div class = "row">
@@ -176,6 +182,7 @@ http.createServer(<span class = "red-text lighten-1">function</span>(req, res){
         </div>
         <div class = "col s12 center-align">
           <p class = "white-text">If you found anything useful, donate ;)</p>
+          <a href="/contact">contact</a>
         </div>
       </div>
       <div class = "footer-copyright">
