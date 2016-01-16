@@ -1,0 +1,26 @@
+body{
+
+}
+p{
+  font-size: 1.5em;
+}
+
+.style-dropdown{
+  color:#fff;
+}
+.style-dropdown li a{
+  color:#212121;
+  border-left: 3px solid #69f0ae;
+}
+.style-dropdown a:hover{
+  background-color:#fff;
+  color: #69f0ae;
+}
+
+.home-icon{
+  padding-left:9px;
+}
+
+.a{
+
+}

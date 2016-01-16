@@ -1,16 +1,17 @@
-## website I'm building
+## Website built on NodeJS/Express
 
 ### How to install
+> > ##### git clone https://github.com/xDinomode/dino-website.git
 
-> git clone https://github.com/xDinomode/dino-website.git
+> > ##### cd dino-website
 
->cd dino-website
+> > ##### npm install --save
 
->npm install --save
+> > ##### node index
 
->node index.js
 
-it will be on localhost:3000
 
-I'm running it here currently
+##### I'm running it here currently
 [dinosaurscode.xyz](http://dinosaurscode.xyz)
+
+![alt tag](http://i.imgur.com/B2fjKuJ.png)
