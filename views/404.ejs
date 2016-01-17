@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.1/animate.min.css">
   <link rel="stylesheet" href="/css/404css.css">
 
 </head>
@@ -34,22 +33,5 @@
 
     <% include templates/footer %>
 
-  <script>
-    function aaa(){
-      $(".aaa").addClass("animated bounceInLeft");
-    }
-    function xxx(){
-      $(".xxx").addClass("animated bounceInLeft");
-    }
-    function yyy(){
-      $(".yyy").addClass("animated bounceInLeft");
-    }
-    var options = [
-      {selector: ".aaa", offset: 60, callback: "aaa()"},
-      {selector: ".xxx", offset: 60, callback: "xxx()"},
-      {selector: ".yyy", offset: 60, callback: "yyy()"}
-    ];
-    Materialize.scrollFire(options);
-  </script>
 </body>
 </html>
