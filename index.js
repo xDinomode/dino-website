@@ -1,14 +1,16 @@
 var express = require("express");
 var app = express();
 
-var router = require("./routes/routes");
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
 app.use(express.static(__dirname + "/public"));
 
-app.use("/", router);
+app.use("/tutorials", require("./routes/tutorials"));
+app.use("/", require("./routes/routes"));
+
+app.disable('x-powered-by');
 
 //handle 404
 app.use(function(req, res, next){
@@ -34,6 +36,8 @@ app.use(function(err, req, res, next){
   res.type("txt").send("500 error " + err);
 });
 
-app.listen(3000);
 
-console.log("\n\t\t\tapp running on port localhost:3000\n");
+if (!module.parent) {
+  app.listen(3000);
+  //console.log("\n\t\t\tapp running on port localhost:3000\n");
+}
