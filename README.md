@@ -7,11 +7,13 @@
 $ git clone https://github.com/xDinomode/dino-website.git
 ```
 
-> > 2.  ```bash
+> > 2.  
+```bash
 $ cd dino-website
 ```
 
-> > 3.  ```bash
+> > 3.  
+```bash
 $ npm install --save
 ```
 
