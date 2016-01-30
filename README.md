@@ -6,17 +6,14 @@
 ```bash
 $ git clone https://github.com/xDinomode/dino-website.git
 ```
-
 > > 2.  
 ```bash
 $ cd dino-website
 ```
-
 > > 3.  
 ```bash
 $ npm install --save
 ```
-
 > > 4.  Inside of `/config`, create a file named  `database.js` and place the following inside
 ```javascript
 module.exports = {
@@ -24,12 +21,10 @@ module.exports = {
   "secret" : "ReplaceThisWithRandomString"
 };
 ```
-
 > > 5. Start up [MongoDB](https://mongodb.org)
 ```bash
 $ mongod
 ```
-
 > > 6. Start the app and go to localhost:3000
 ```bash
 $ node .
