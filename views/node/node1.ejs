@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dinosaurs Code</title>
+  <title>NodeJS - tutorial</title>
   <meta name = "viewport" content = "initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
@@ -20,7 +20,7 @@
     <div class = "container">
       <div class = "row">
         <div class = "col s12">
-          <h1 class = "center-align">Learn <span class = "green-text text-accent-2">NodeJS</span></h1>
+          <h1 class = "center-align"><span class = "green-text text-accent-2">NodeJS</span></h1>
         </div>
       </div>
 
@@ -137,20 +137,19 @@ http.createServer(<span class = "red-text">function</span>(req, res){
           </ul>
         </div>
       </div>
+    </div>
 
-      <div class = "row">
-          <div class = "col s12">
-            <p><a href="https://github.com/xDinomode/ez-nodejs-projects/tree/master/nodehttp">Source code on Github</a></p>
+    <div class = "row">
+        <form class = "col s12" action="/comment" method = "POST">
+          <div class = "row">
+            <div class = "input-field col s12">
+              <textarea id = "textarea1" class = "materialize-textarea" name = "textarea" length = "120" required></textarea>
+              <label for="textarea1">Comment</label>
+              <input type="submit" value = "submit" class = "btn">
+              <input type="hidden" name="_csrf" value=<%= csrf %>>
+            </div>
           </div>
-      </div>
-
-      <div class = "row">
-        <div class = "col s6">
-          <div class = "card-panel red">
-            <span class = "white-text">Site under construction! More lessons to come...</span>
-          </div>
-        </div>
-      </div>
+        </form>
     </div>
 
     </div>

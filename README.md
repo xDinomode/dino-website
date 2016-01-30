@@ -1,13 +1,37 @@
 ## Website built on NodeJS/Express
 
 ### How to install
-> > ##### git clone https://github.com/xDinomode/dino-website.git
 
-> > ##### cd dino-website
+1. > >  Clone repo
+```bash
+$ git clone https://github.com/xDinomode/dino-website.git
+```
 
-> > ##### npm install --save
+2. > > ```bash
+$ cd dino-website
+```
 
-> > ##### node index
+3. > > ```bash
+$ npm install --save
+```
+
+4. > > Inside of `/config`, create a file named  `database.js` and place the following inside
+```javascript
+module.exports = {
+  "url" : "mongodb://localhost/YourDatabase",
+  "secret" : "ReplaceThisWithRandomString"
+};
+```
+
+5. > > Start up [MongoDB](https://mongodb.org)
+```bash
+$ mongod
+```
+
+6. > > Start the app and go to localhost:3000
+```bash
+$ node .
+```
 
 
 
