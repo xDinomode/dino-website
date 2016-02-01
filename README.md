@@ -31,8 +31,8 @@ $ node .
 ```
 
 
-
+<!--
 ##### I'm running it here currently
-[dinosaurscode.xyz](http://dinosaurscode.xyz)
+[dinosaurscode.xyz](http://dinosaurscode.xyz) -->
 
 ![alt tag](http://i.imgur.com/B2fjKuJ.png)
