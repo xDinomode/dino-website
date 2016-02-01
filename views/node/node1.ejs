@@ -147,9 +147,19 @@ http.createServer(<span class = "red-text">function</span>(req, res){
               <label for="textarea1">Comment</label>
               <input type="submit" value = "submit" class = "btn">
               <input type="hidden" name="_csrf" value=<%= csrf %>>
+              <input type="hidden" name="path" value="/tutorials/node/1">
             </div>
           </div>
         </form>
+    </div>
+
+    <div class = "row">
+      <% for(var i = 0; i < comments.length; i++){ %>
+        <div class = "card box-comment col s12">
+          <h1 class = "box-comment-username"><%= comments[i].username %></h1>
+          <h1 class = "box-comment-body"><%= comments[i].commentbody %></h1>
+        </div>
+      <% } %>
     </div>
 
     </div>

@@ -1,15 +1,20 @@
 var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
 
-
-var commentSchema = mongoose.Schema({
+var commentSchema = new Schema({
+  url: String,
   commentbody: String,
-  created_by: {type: mongoose.Schema.Types.ObjectId, ref: "Uzers"}
+  //replies: [commentSchema],
+  //upvotes:{type: Number},
+  username: String,
+  created_by: {type: Schema.Types.ObjectId, ref: "Uzers"},
+}, {
+  timestamps: {createdAt: "created_at"}
 });
 
-var userSchema = mongoose.Schema({
-  username: {type: String, required: true, unique: true},
+var userSchema = new Schema({
+  username: {type: String, minlength: 1, maxlength: 25, required: true, unique: true},
   password: {type: String, required: true},
-  comments: [commentSchema]
 }, {
   timestamps: {createdAt: "created_at"}
 });

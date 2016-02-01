@@ -37,6 +37,8 @@ module.exports = function(passport){
     User.Users.findById(req.user._id, function(err, user){
       if(err) return console.log(err);
       var comment = new User.Comments({
+        url: req.body.path,
+        username: req.user.username,
         commentbody: req.body.textarea,
         created_by: user._id
       });
@@ -46,12 +48,25 @@ module.exports = function(passport){
           User.Comments.findOne({created_by: req.user._id})
             .populate("created_by")
             .exec(function(err, comment){
-              res.send(comment.created_by.username);
+              res.redirect("/tutorials/node/1");
             });
         }
       });
     });
 
+  });
+
+  router.get("/path", function(req, res){
+    User.Comments.find({url: "/tutorials/node/1"}, function(err, comments){
+      if(err) console.log(err);
+      res.send(comments);
+    });
+  });
+  router.get("/my", function(req, res){
+    User.Comments.find({created_by: req.user._id}, function(err, comments){
+      if(err) console.log(err);
+      res.send(comments);
+    });
   });
 
   router.get("/profile", isLoggedIn, function(req, res){
@@ -79,12 +94,30 @@ module.exports = function(passport){
   router.get("/tutorials/node/:number", function(req, res){
     switch(req.params.number){
       case("1"):
-      if(req.isAuthenticated()) res.render("./node/node1", {user: req.user, csrf: req.csrfToken()});
-      else res.render("./node/node1", {user: null, csrf: req.csrfToken()});
+      User.Comments.find({url: "/tutorials/node/1"})
+        .populate({
+          path: "created_by",
+          options: {limit: 5}
+        })
+        .exec(function(err, data){
+          if(req.isAuthenticated()) res.render("./node/node1", {user: req.user, csrf: req.csrfToken(), comments: data});
+          else res.render("./node/node1", {user: req.user, csrf: req.csrfToken(), comments: data});
+        });
+      // if(req.isAuthenticated()) res.render("./node/node1", {user: req.user, csrf: req.csrfToken()});
+      // else res.render("./node/node1", {user: null, csrf: req.csrfToken()});
       break;
       case("2"):
-      if(req.isAuthenticated()) res.render("./node/node2", {user: req.user});
-      else res.render("./node/node2", {user: null});
+      User.Comments.find({url: "/tutorials/node/2"})
+        .populate({
+          path: "created_by",
+          options: {limit: 5}
+        })
+        .exec(function(err, data){
+          if(req.isAuthenticated()) res.render("./node/node2", {user: req.user, csrf: req.csrfToken(), comments: data});
+          else res.render("./node/node2", {user: req.user, csrf: req.csrfToken(), comments: data});
+        });
+      // if(req.isAuthenticated()) res.render("./node/node2", {user: req.user});
+      // else res.render("./node/node2", {user: null});
       break;
       default:
       if(req.isAuthenticated()) res.render("404", {user: req.user, url: req.url});

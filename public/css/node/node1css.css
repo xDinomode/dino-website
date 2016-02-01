@@ -14,6 +14,17 @@ code{
   font-size: 1.0625em;
 }
 
+.box-comment{
+  background-color: rgb(244, 244, 244);
+}
+.box-comment-username{
+  font-size: 1.375em;
+  color: rgb(96, 163, 252);
+}
+.box-comment-body{
+  font-size: 1.625em;
+}
+
 .style-dropdown{
   color:#fff;
 }

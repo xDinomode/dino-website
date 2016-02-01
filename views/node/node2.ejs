@@ -152,6 +152,32 @@ router.post(<span class = "green-text text-accent-3">"/"</span>, <span class = "
           </ul>
         </div>
       </div>
+
+
+
+      <div class = "row">
+          <form class = "col s12" action="/comment" method = "POST">
+            <div class = "row">
+              <div class = "input-field col s12">
+                <textarea id = "textarea1" class = "materialize-textarea" name = "textarea" length = "120" required></textarea>
+                <label for="textarea1">Comment</label>
+                <input type="submit" value = "submit" class = "btn">
+                <input type="hidden" name="_csrf" value=<%= csrf %>>
+                <input type="hidden" name="path" value="/tutorials/node/2">
+              </div>
+            </div>
+          </form>
+      </div>
+
+      <div class = "row">
+        <% for(var i = 0; i < comments.length; i++){ %>
+          <div class = "card box-comment col s12">
+            <h1 class = "box-comment-username"><%= comments[i].username %></h1>
+            <h1 class = "box-comment-body"><%= comments[i].commentbody %></h1>
+          </div>
+        <% } %>
+      </div>
+
     </div>
 
     </div>
